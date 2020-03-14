@@ -47,3 +47,16 @@ char findTheDifference(char * s, char * t){
     return add;
 }
 
+//==========================================
+char findTheDifference(char * s, char * t){
+
+    char k = 0;
+    int len = strlen(s);
+    int i =0;
+    for(i=0;i<len;i++)
+    {
+        k = k ^ s[i] ^ t[i];
+    }
+    k = k ^ t[i];
+    return k;
+}
