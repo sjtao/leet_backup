@@ -24,3 +24,17 @@ int missingNumber(int* nums, int numsSize){
     
     return sn;
 }
+
+//
+int missingNumber(int* nums, int numsSize){
+    
+    int i;
+    int sn = numsSize * (numsSize + 1)/2;
+    
+    for (i = 0; i < numsSize; i++)
+    {
+        sn -= nums[i];
+    }
+    
+    return sn;
+}
