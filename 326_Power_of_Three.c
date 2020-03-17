@@ -27,11 +27,32 @@ bool isPowerOfThree(int n){
     // 次方數若取四捨五入前不接近整數則取round後再求3的pow必不為原來數
     return pow(3,round(log(n) / log(3.0))) == n;
 }
-*/
+// fastest method
 bool isPowerOfThree(int n){
     // 正int中最大的3次方數是3^19，(log3(INT_MAX))，
     // 其中1162261467為3次方數，若n也為3次方數，則1162261467 % n必為0
     // 其中取最大的3次方數想像成正int中最多3的因數，就是將n中所有3的因數對消
     // 如對消到最後還有值則取餘數也一定有值，取最大才能適用所正數
     return n>0 && 1162261467 % n == 0;
+}
+*/
+
+bool isPowerOfThree(int n){
+    bool Power = 0;
+    double m;
+    int k;
+
+    if(n == 0)
+    {
+        return 0;
+    }
+
+    m = log10(n)/log10(3);
+    k = (int)m;
+
+    if(m == k)
+        Power = 1;
+
+    return Power;       
+
 }
