@@ -32,7 +32,7 @@ int minMoves(int* nums, int numsSize){
     
     if(max != min)
     {
-        //move = sum - numsSize*min; //overflow for test [1,2147483647]
+        //move = sum - numsSize*min; //overflow for test [1,2147483647] rewrite as below, or move should be long int
         for(i = 0; i < numsSize; i++)
         {
             move += nums[i] - min;
