@@ -3,16 +3,11 @@
 
 int oddCells(int n, int m, int** indices, int indicesSize, int* indicesColSize){
     //* indicesColSize = 2;
-    int **arr = (int **)malloc(n * sizeof(int *)); 
-    for (int i=0; i<n; i++) 
-         arr[i] = (int *)malloc(m * sizeof(int)); 
-    
-    for(int i = 0; i < n; i++)
+     int **arr = (int **)malloc(n * sizeof(int *)); 
+    for (int i=0; i<n; i++)
     {
-        for(int j = 0; j < m; j++)
-        {
-            arr[i][j] = 0;
-        }
+        arr[i] = (int *)malloc(m * sizeof(int));
+        memset((void *) arr[i], 0x0, sizeof(int) * m);
     }
     
     for(int i = 0; i < indicesSize; i++)
