@@ -20,3 +20,14 @@ int* sumZero(int n, int* returnSize){
     
     return array;
 }
+
+int* sumZero(int n, int* returnSize){
+    int * arr = calloc(n, sizeof(int));
+    for(int i =0;i<n/2;i++)
+    {
+        arr[i] = (n-2*i)/2;
+        arr[n-i-1] = -(n-2*i)/2; //-arr[i];   //direct calculation is much faster than the array way
+    }
+    *returnSize = n;
+    return arr;
+}
