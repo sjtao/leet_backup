@@ -8,7 +8,8 @@ int maxArea(int* height, int heightSize){
     
     while(left < right)
     {
-        w = right - left;
+       w = right - left;
+        /*
         if(height[left] < height[right])
         {
             h = height[left];
@@ -19,6 +20,8 @@ int maxArea(int* height, int heightSize){
             h = height[right];
             right--;
         }
+        */
+        h = height[right] < height[left] ? height[right--] : height[left++];
         
         temp = w * h;
         area = temp > area ? temp : area;
