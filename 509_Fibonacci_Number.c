@@ -7,14 +7,9 @@ int fib(int N){
 
     int result;
     
-    if (N == 0)
+    if (N <= 1)
     {
-        result = 0;
-    }
-    
-    else if(N == 1)
-    {
-        result = 1;
+        result = N;
     }
     
     else
