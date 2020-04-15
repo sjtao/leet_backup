@@ -29,3 +29,22 @@ bool judgeCircle(char * moves){
     return origin;
     
 }
+
+bool judgeCircle(char * moves){
+    
+    int len = strlen(moves);
+    
+    int H = 0;
+    int V = 0;
+    
+    for(int i = 0; i < len; i++) //same performance
+    {
+        if(moves[i] == 'R') H ++;
+        else if(moves[i] == 'L') H --;
+        else if(moves[i] == 'U') V ++;
+        else if(moves[i] == 'D') V --;
+    }
+    
+    return (H==0 && V==0);
+    
+}
