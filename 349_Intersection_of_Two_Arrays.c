@@ -79,3 +79,28 @@ int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* ret
     
 }
 
+//fastest
+int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize){
+    int *result, i1, i2, newLen;
+  
+    qsort(nums1, nums1Size, sizeof(int), compare);
+    qsort(nums2, nums2Size, sizeof(int), compare);
+    
+    newLen = nums1Size < nums2Size ? nums1Size : nums2Size;
+    if ((result = malloc(sizeof(int[newLen]))) == NULL)
+        return NULL;
+    
+    for (i1 = i2 = newLen = 0; i1 < nums1Size && i2 < nums2Size;)
+        if (nums1[i1] == nums2[i2]) {
+            if (newLen == 0 || result[newLen - 1] != nums1[i1])
+                result[newLen++] = nums1[i1];
+            i1++; 
+            i2++;
+        } else if (nums1[i1] < nums2[i2])
+            i1++;
+        else
+            i2++;
+    *returnSize = newLen;
+    
+    return result;
+}
