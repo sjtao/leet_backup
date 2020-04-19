@@ -14,3 +14,36 @@ int majorityElement(int* nums, int numsSize){
     return nums[numsSize/2];
     
 }
+
+/*
+Runtime: 24 ms, faster than 17.18% of C online submissions for Majority Element.
+Memory Usage: 7.4 MB, less than 100.00% of C online submissions for Majority Element.
+*/
+
+int majorityElement(int* nums, int numsSize){
+
+    int i;  
+    int freq = nums[0];
+    int cnt = 1;
+    
+    for(i = 1; i < numsSize; i++)
+    {
+        if(nums[i] == freq)
+        {
+            cnt ++;
+        }
+        else
+        {
+            cnt --;
+        }
+        
+        if(cnt == 0)
+        {
+            freq = nums[i];
+            cnt = 1;
+        }
+        
+    }   
+    
+    return freq;
+}
