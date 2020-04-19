@@ -59,3 +59,42 @@ int countLargestGroup(int n){
     return digit_count[max];
 }
 
+/*
+Runtime: 0 ms, faster than 100.00% of C online submissions for Count Largest Group.
+Memory Usage: 6.7 MB, less than 100.00% of C online submissions for Count Largest Group.
+*/
+int countLargestGroup(int n){
+    
+    if(n < 10)
+    {
+        return n;
+    }
+    
+    int *digit = malloc((n+1) * sizeof(int));
+    int *count = calloc(37, sizeof(int)); //4*9=36
+    int *digit_count = calloc(n+1, sizeof(int));
+    
+    int i;
+    for(i = 0; i < n+1; i++)
+    {
+        digit[i] = digitsum(i);
+        count[digit[i]]++;
+    }
+    
+    
+    int max = count[1];
+    for(i = 2; i < 37; i++)
+    {
+        if(max < count[i])
+        {
+            max =count[i];
+        }
+    }
+    
+    for(i = 0; i < 37; i++)
+    {
+        digit_count[count[i]]++;
+    }
+    
+    return digit_count[max];
+}
