@@ -41,7 +41,7 @@ int lastStoneWeight(int* stones, int stonesSize){
 
 
 /*
-Runtime: 4 ms, faster than 19.14% of C online submissions for Last Stone Weight.
+Runtime: 0 ms, faster than 100.00% of C online submissions for Last Stone Weight.
 Memory Usage: 5.3 MB, less than 100.00% of C online submissions for Last Stone Weight.
 */
 int cmpfunc (const void * a, const void * b) {
@@ -55,16 +55,11 @@ int lastStoneWeight(int* stones, int stonesSize){
         return stones[0];
     }
     
-    int x, y;
-    
     for(int s = stonesSize; s > 1; s--)
     {
         qsort(stones, s, sizeof(int), cmpfunc);
         
-        y = stones[s - 1];
-        x = stones[s - 2];
-        
-        stones[s - 2] = y - x;
+        stones[s - 2] =  stones[s - 1] - stones[s - 2];
         stones[s - 1] = 0;    
     }
     
