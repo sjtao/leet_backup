@@ -19,7 +19,7 @@ int majorityElement(int* nums, int numsSize){
 Runtime: 24 ms, faster than 17.18% of C online submissions for Majority Element.
 Memory Usage: 7.4 MB, less than 100.00% of C online submissions for Majority Element.
 */
-
+//Moore's voting algorithm
 int majorityElement(int* nums, int numsSize){
 
     int i;  
@@ -46,4 +46,27 @@ int majorityElement(int* nums, int numsSize){
     }   
     
     return freq;
+}
+
+/*
+Runtime: 24 ms, faster than 17.18% of C online submissions for Majority Element.
+Memory Usage: 7.5 MB, less than 100.00% of C online submissions for Majority Element.
+*/
+int majorityElement(int* nums, int numsSize){
+
+    int count = 0;
+    int result;
+    
+    for(int i = 0; i < numsSize; i ++)
+    {
+        if(count == 0 || result == nums[i])
+        {
+            result = nums[i];
+            count++;
+        }
+        else
+            count--;
+    }
+    
+    return result;
 }
