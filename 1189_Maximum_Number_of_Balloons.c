@@ -41,15 +41,6 @@ int maxNumberOfBalloons(char * text){
     min2 = (count[3] < count[4]) ? count[3] : count[4];
     min21 = min2/2;
     
-    if(min1 <= min21)
-    {
-        return min1;
-    }
-    else if (min1 >= min21)
-    {
-        return min21;
-    }
-
-    return;
+    return (min1 < min21) ? min1 : min21;
 }
 
