@@ -3,8 +3,6 @@ Runtime: 48 ms, faster than 62.96% of C online submissions for Partition Array I
 Memory Usage: 8.1 MB, less than 100.00% of C online submissions for Partition Array Into Three Parts With Equal Sum.
 */
 
-
-
 bool canThreePartsEqualSum(int* A, int ASize){
     
     int sum = 0;
@@ -43,5 +41,48 @@ bool canThreePartsEqualSum(int* A, int ASize){
     }
     
     return true;
+}
+
+/*
+Runtime: 44 ms, faster than 85.19% of C online submissions for Partition Array Into Three Parts With Equal Sum.
+Memory Usage: 8.4 MB, less than 100.00% of C online submissions for Partition Array Into Three Parts With Equal Sum.
+*/
+
+
+
+bool canThreePartsEqualSum(int* A, int ASize){
+    
+    int sum = 0;
+    int i, j;
+    for(i = 0; i < ASize; i++)
+    {
+        sum += A[i];
+    }
+    
+    if(sum % 3 != 0)
+    {
+        return false;
+    }
+    
+    int lsum = 0;
+    int hitpsum = 0;
+    for(i = 0; i < ASize; i++)
+    {
+        lsum += A[i];
+        if(lsum == sum / 3)
+        {
+            hitpsum += 1;
+            lsum = 0;
+            if(hitpsum == 2)
+                break;
+        }
+    }
+    
+    if(i < ASize-1)
+    {
+        return true;
+    }
+    
+    return false;
 }
 
