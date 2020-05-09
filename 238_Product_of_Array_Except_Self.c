@@ -6,8 +6,8 @@ Memory Usage: 14 MB, less than 100.00% of C online submissions for Product of Ar
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
-
-int* productExceptSelf(int* nums, int numsSize, int* returnSize){
+//Note: Please solve it without division and in O(n)!
+int* productExceptSelf(int* nums, int numsSize, int* returnSize){ 
     
     *returnSize = numsSize;
     
