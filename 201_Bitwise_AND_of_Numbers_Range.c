@@ -16,3 +16,17 @@ int rangeBitwiseAnd(int m, int n){
 
     return m << i;
 }
+
+/*
+Runtime: 16 ms, faster than 20.67% of C online submissions for Bitwise AND of Numbers Range.
+Memory Usage: 5.5 MB, less than 100.00% of C online submissions for Bitwise AND of Numbers Range.
+*/
+int rangeBitwiseAnd(int m, int n){
+    
+    while (m < n) 
+    {
+       n = n & (n-1);
+    }
+    
+    return m&n;
+}
