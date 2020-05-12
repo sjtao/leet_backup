@@ -17,7 +17,8 @@ bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* retu
     
     for(i = 0; i < candiesSize; i++)
     {
-        great[i] = (candies[i] >= em ? 1 : 0);
+        //great[i] = (candies[i] >= em ? 1 : 0);
+        great[i] = (candies[i] >= em);
     }
     
     *returnSize = candiesSize;
