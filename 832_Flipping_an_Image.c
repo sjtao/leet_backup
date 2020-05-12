@@ -34,3 +34,31 @@ int** flipAndInvertImage(int** A, int ASize, int* AColSize, int* returnSize, int
     
     return R;
 }
+
+/*
+Runtime: 8 ms, faster than 97.14% of C online submissions for Flipping an Image.
+Memory Usage: 6.5 MB, less than 100.00% of C online submissions for Flipping an Image.
+*/
+int** flipAndInvertImage(int** A, int ASize, int* AColSize, int* returnSize, int** returnColumnSizes){
+
+    int ** R = malloc(ASize * sizeof(int*));
+    ** returnColumnSizes = malloc(ASize * sizeof(int));
+    
+    int col = AColSize[0];
+    int i, j;
+    
+    for(i = 0; i < ASize; i++)
+    {
+        R[i] = malloc(col * sizeof(int));
+        (*returnColumnSizes)[i] = col;
+        
+        for(j = 0; j < col; j++)
+        {
+            R[i][j] = (A[i][col-j-1] == 0);
+        }
+    }
+
+    *returnSize = ASize;
+    
+    return R;
+}
