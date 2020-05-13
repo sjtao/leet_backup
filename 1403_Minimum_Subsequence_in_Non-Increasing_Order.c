@@ -40,3 +40,34 @@ int* minSubsequence(int* nums, int numsSize, int* returnSize){
     *returnSize = i+1;
     return sub;
 }
+
+//similar performance
+int* minSubsequence(int* nums, int numsSize, int* returnSize){
+
+    int i;
+    int sum = 0;
+    int mid = 0;
+    int *sub = malloc(numsSize * sizeof(int));
+    
+    qsort(nums, numsSize, sizeof(int), cmpfunc);
+    
+    for(i = 0; i < numsSize; i++)
+    {
+        sum += nums[i];
+    }
+    
+    for(i = 0; i < numsSize; i++)
+    {
+        mid += nums[numsSize -1 - i];
+        sum -= nums[numsSize -1 - i];
+        sub[i] = nums[numsSize -1 - i];
+        
+        if(mid > sum)
+        {
+            break;
+        }
+    }
+    
+    *returnSize = i+1;
+    return sub;
+}
