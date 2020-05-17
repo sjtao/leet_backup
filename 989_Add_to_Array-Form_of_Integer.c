@@ -55,3 +55,51 @@ int* addToArrayForm(int* A, int ASize, int K, int* returnSize){
     *returnSize = l;
     return result;
 }
+
+/*
+Runtime: 84 ms, faster than 94.83% of C online submissions for Add to Array-Form of Integer.
+Memory Usage: 15.9 MB, less than 100.00% of C online submissions for Add to Array-Form of Integer.
+*/
+
+int* addToArrayForm(int* A, int ASize, int K, int* returnSize){
+
+    if(K==0)
+    {
+        *returnSize = ASize;
+        return A;
+    }
+    
+    int lenK = log10(K)+1;
+    int len = ASize >= lenK ? ASize : lenK;
+    
+    int *result = malloc((len+2)*sizeof(int));
+    
+    int i, j;
+    
+    int carry = 0;
+    int l = 0;
+    i = ASize - 1;
+    j = 0;
+    while(i >= 0 || K > 0)
+    {
+        carry += (i>=0) ? A[i--] : 0;
+        carry += (K>0) ? (K%10) : 0;
+        
+        result[l++] = carry % 10;
+        carry /= 10;
+        K /=10;
+    }
+    if(carry != 0) result[l++] = carry;
+    
+    //reverse
+    int temp;
+    for(i = 0; i < l/2; i++)
+    {
+        temp = result[i];
+        result[i] = result[l-1-i];
+        result[l-1-i] = temp;
+    }
+    
+    *returnSize = l;
+    return result;
+}
