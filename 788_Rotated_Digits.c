@@ -1,30 +1,27 @@
 /*
-Runtime: 24 ms, faster than 9.52% of C online submissions for Rotated Digits.
-Memory Usage: 14.4 MB, less than 100.00% of C online submissions for Rotated Digits.
+Runtime: 4 ms, faster than 33.33% of C online submissions for Rotated Digits.
+Memory Usage: 5.3 MB, less than 100.00% of C online submissions for Rotated Digits.
 */
 
 int digit(int S)
 {
     int a;
-    int r = 1;
-    int *d = calloc(10, sizeof(int));
+    int c = 0;
     while (S > 0)
     {
         a = S % 10;
-        d[a]++;
+        if(a == 3 || a == 4 || a == 7) //347
+        {
+            return 0;
+        }
+        if(a == 2 || a == 5 || a == 6 || a == 9)
+        {
+            c++;
+        }
         S = S/10;
     }
     
-    if(d[3] != 0 || d[4] != 0 || d[7] != 0) //347
-    {
-        r = 0;
-    }
-    if(d[2] == 0 && d[5] == 0 && d[6] == 0 && d[9] == 0) //2569
-    {
-        r = 0;
-    }
-    
-    return r;
+    return c > 0 ? 1 : 0;
 }
 
 int rotatedDigits(int N){
